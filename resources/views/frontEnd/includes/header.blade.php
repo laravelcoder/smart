@@ -19,9 +19,9 @@
                     @endif
                 </div>
                 <div class="pull-left">
-{{--                     @if(Helper::GeneralSiteSettings("contact_t3") !="")
+                    @if(Helper::GeneralSiteSettings("contact_t3") !="")
                         <i class="fa fa-phone"></i> &nbsp;<a href="call:{{ Helper::GeneralSiteSettings("contact_t5") }}"><span dir="ltr">{{ Helper::GeneralSiteSettings("contact_t5") }}</span></a>
-                    @endif --}}
+                    @endif
 
                     @if(Helper::GeneralSiteSettings("contact_t6") !="")
                         <span class="top-email"> &nbsp; | &nbsp;

@@ -245,7 +245,7 @@ Route::Group(['prefix' => env('BACKEND_PATH')], function () {
 
 Route::get('/', 'FrontendHomeController@HomePage')->name('Home');
 // ../home url
-Route::get('/home', 'FrontendHomeController@HomePage')->name('HomePage');
+//Route::get('/home', 'FrontendHomeController@HomePage')->name('HomePage');
 // ../subscribe to newsletter submit  (ajax url)
 Route::post('/subscribe', 'FrontendHomeController@subscribeSubmit')->name('subscribeSubmit');
 // ../Comment submit  (ajax url)

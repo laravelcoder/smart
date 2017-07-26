@@ -8,7 +8,7 @@
   <title>{{$PageTitle}} {{($PageTitle !="")? "|":""}} {{ Helper::GeneralSiteSettings("site_title_" . trans('backLang.boxCode')) }}</title>
   <meta name="description" content="{{$PageDescription}}"/>
   <meta name="keywords" content="{{$PageKeywords}}"/>
-{{--   <meta name="author" content="{{ URL::to('') }}"/> --}}
+  {{--<meta name="author" content="{{ URL::to('') }}"/>--}}
 {{--  --}}
   <!-- Page Title -->
   {{-- <title>Affordable Programmer | Website & Online Software Development Company</title> --}}
@@ -26,7 +26,7 @@
   <link href="{!! asset('/frontEnd/css/animate.css') !!}" rel="stylesheet" type="text/css">
   <link href="{!! asset('/frontEnd/css/css-plugin-collections.css') !!}" rel="stylesheet"/>
   <!-- CSS | menuzord megamenu skins -->
-  <link id="menuzord-menu-skins" href="css/menuzord-skins/menuzord-rounded-boxed.css" rel="stylesheet"/>
+  <link id="menuzord-menu-skins" href="{!! asset('/frontEnd/css/menuzord-skins/menuzord-rounded-boxed.css') !!}" rel="stylesheet"/>
   <!-- CSS | Main style file -->
   <link href="{!! asset('/frontEnd/css/style-main.css') !!}" rel="stylesheet" type="text/css">
   <!-- CSS | Preloader Styles -->
@@ -60,6 +60,6 @@
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-    <script src="{!! asset('/frontEnd/https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') !!}"></script>
-    <script src="{!! asset('/frontEnd/https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}"></script>
+  <script src="{!! asset('/frontEnd/https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') !!}"></script>
+  <script src="{!! asset('/frontEnd/https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}"></script>
   <![endif]-->

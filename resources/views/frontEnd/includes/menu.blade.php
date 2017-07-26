@@ -15,6 +15,7 @@ $category_title_var = "title_" . trans('backLang.boxCode');
         $link_title_var = "title_" . trans('backLang.boxCode');
         ?>
         @foreach($HeaderMenuLinks as $HeaderMenuLink)
+
             @if($HeaderMenuLink->type==3)
                 <?php
                 // Section with drop list

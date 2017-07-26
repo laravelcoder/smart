@@ -36,11 +36,12 @@ if (Helper::GeneralSiteSettings("style_type")) {
         </div>
         <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
       </div> --}}
-    {{-- @include('frontEnd.partials.header') --}}
+    @include('frontEnd.partials.header')
       <!-- Start main-content -->
       <div class="main-content">
+        {{--<h1>content here</h1>--}}
         <!-- Content Section -->
-        @yield('content')
+         @yield('content')
         <!-- end of Content Section -->
       </div>
       <!-- end main-content -->
@@ -52,7 +53,7 @@ if (Helper::GeneralSiteSettings("style_type")) {
 
   <!-- Footer Scripts -->
   <!-- JS | Custom script for all pages -->
-  <script src="{!! asset('/frontEnd/js/custom.js') !!}"></script>
+  {{--<script src="{!! asset('/frontEnd/js/custom.js') !!}"></script>--}}
 
 
   <script type="text/javascript" src="{!! asset('/frontEnd/js/revolution-slider/js/extensions/revolution.extension.actions.min.js') !!}"></script>

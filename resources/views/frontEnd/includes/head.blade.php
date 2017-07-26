@@ -12,25 +12,22 @@
 <link href="{{ URL::to('frontEnd/css/style.css') }}" rel="stylesheet"/>
 <link href="{{ URL::to('frontEnd/css/color.css') }}" rel="stylesheet"/>
 
+
 @if( trans('backLang.direction')=="rtl")
 <link href="{{ URL::to('frontEnd/css/rtl.css') }}" rel="stylesheet"/>
 @endif
 
 <!-- Favicon and Touch Icons -->
 @if(Helper::GeneralSiteSettings("style_fav") !="")
-    <link href="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_fav")) }}" rel="shortcut icon"
-          type="image/png">
+    <link href="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_fav")) }}" rel="shortcut icon" type="image/png">
 @else
     <link href="{{ URL::to('uploads/settings/nofav.png') }}" rel="shortcut icon" type="image/png">
 @endif
 @if(Helper::GeneralSiteSettings("style_apple") !="")
     <link href="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_apple")) }}" rel="apple-touch-icon">
-    <link href="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_apple")) }}" rel="apple-touch-icon"
-          sizes="72x72">
-    <link href="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_apple")) }}" rel="apple-touch-icon"
-          sizes="114x114">
-    <link href="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_apple")) }}" rel="apple-touch-icon"
-          sizes="144x144">
+    <link href="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_apple")) }}" rel="apple-touch-icon" sizes="72x72">
+    <link href="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_apple")) }}" rel="apple-touch-icon" sizes="114x114">
+    <link href="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_apple")) }}" rel="apple-touch-icon" sizes="144x144">
 @else
     <link href="{{ URL::to('uploads/settings/nofav.png') }}" rel="apple-touch-icon">
     <link href="{{ URL::to('uploads/settings/nofav.png') }}" rel="apple-touch-icon" sizes="72x72">

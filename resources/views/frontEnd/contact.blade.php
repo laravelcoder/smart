@@ -240,6 +240,7 @@
     </section>
 
 @endsection
+
 @section('footerInclude')
     @if(count($Topic->maps) >0)
         @foreach($Topic->maps->slice(0,1) as $map)
