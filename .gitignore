@@ -13,3 +13,6 @@ Homestead.yaml
 /public/html/*
 *.rar
 *.zip
+/PhillipMadsen.html
+/woocommerce-dataLayer.php
+/Clients - Shortcut.lnk
