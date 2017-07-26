@@ -11,3 +11,5 @@ Homestead.yaml
 *.psd
 /*.sublime-workspace
 /public/html/*
+*.rar
+*.zip
