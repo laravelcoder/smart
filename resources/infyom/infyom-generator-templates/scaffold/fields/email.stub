@@ -1,0 +1,7 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-md-3">
+    {!! Form::label('$FIELD_NAME$', trans('$MODEL_NAME_PLURAL_CAMEL$.$FIELD_NAME$')) !!}
+    {!! Form::email('$FIELD_NAME$', null, ['class' => 'form-control']) !!}
+</div>
+{{-- AddToLang '$FIELD_NAME$' => '$FIELD_NAME_TITLE$', --}}
+{!! Form::email('$FIELD_NAME$', null, ['class' => 'form-control', 'value' => old('$FIELD_NAME$')]) !!}

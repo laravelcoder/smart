@@ -1,0 +1,14 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
+    {!! Form::number('$FIELD_NAME$', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-sm-6 {{ $errors->has('$FIELD_NAME$')? 'has-error' : '' }}">
+    {!! Form::label('$FIELD_NAME$',  trans('$MODEL_NAME_PLURAL_CAMEL$.$FIELD_NAME$'), ['class' => 'control-label']) !!}
+    {!! Form::number('$FIELD_NAME$', null, ['class' => 'form-control', 'value' => old('$FIELD_NAME$')]) !!}
+    {!! $errors->has('$FIELD_NAME$')? '<p class="help-block"> '.$errors->first('$FIELD_NAME$').' </p>':'' !!}
+</div>
+
+{{-- AddToLang '$FIELD_NAME$' => '$FIELD_NAME_TITLE$', --}}

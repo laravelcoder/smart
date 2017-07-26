@@ -1,0 +1,41 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('$FIELD_NAME$', trans('$MODEL_NAME_PLURAL_CAMEL$.$FIELD_NAME$')) !!}
+    {!! Form::file('$FIELD_NAME$') !!}
+</div>
+<div class="clearfix"></div>
+
+<br style="clear:both" />
+<!-- $FIELD_NAME_TITLE$ Image Field -->
+<div class="form-group col-sm-6">
+    <div class="col-sm-12">
+        {!! Form::label('$FIELD_NAME$', trans('$MODEL_NAME_PLURAL_CAMEL$.$FIELD_NAME$')) !!}
+        <div class="fileupload fileupload-new control-group {!! $errors->has('$FIELD_NAME$') ? 'has-error' : '' !!}" data-provides="fileinput">
+            @if(isset($$MODEL_NAME_CAMEL$->$FIELD_NAME$) && $$MODEL_NAME_CAMEL$->$FIELD_NAME$!="")
+            <div class="fileupload-new thumbnail" style="width: 400px; height: 400px;min-width: 200px; min-height: 200px; max-width: 500px; max-height: 400px;">
+
+                                    <img src="{{ url('uploads/$MODEL_NAME_PLURAL_CAMEL$/thumb_'.$$MODEL_NAME_CAMEL$->$FIELD_NAME$) }}" alt="$$MODEL_NAME_CAMEL$->$FIELD_NAME$">
+                                {{-- @else --}}
+                {{-- <img src="http://www.placehold.it/400x400/EFEFEF/AAAAAA?text=add+image" alt=""/> --}}
+
+            </div>
+            @endif
+            <div class="fileupload-preview fileupload-exists thumbnail" style="width: 400px; height: 400px; line-height: 20px;min-width: 200px; min-height: 200px; max-width: 500px; max-height: 400px;"></div>
+            <div>
+                <span class="btn btn-light-grey btn-file">
+                <span class="fileupload-new"><i class="fa fa-picture-o"></i> Select  $FIELD_NAME_TITLE$</span>
+                <span class="fileupload-exists"><i class="fa fa-picture-o"></i> Change</span>
+                    {!! Form::file('$FIELD_NAME$', null, ['class'=>'form-control', 'id' => '$FIELD_NAME$', 'value'=>Input::old('$FIELD_NAME$')]) !!}
+                            @if ($errors->first('$FIELD_NAME$'))
+                                <span class="help-block">{!! $errors->first('$FIELD_NAME$') !!}</span>
+                            @endif
+                </span>
+                <a href="#" class="btn fileupload-exists btn-light-grey" data-dismiss="fileupload"><i class="fa fa-times"></i> Remove</a>
+            </div>
+        </div>
+    </div>
+</div>
+<br style="clear:both" />
+
+
+{{-- AddToLang '$FIELD_NAME$' => '$FIELD_NAME_TITLE$', --}}

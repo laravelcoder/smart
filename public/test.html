@@ -1,0 +1,162 @@
+<html>
+<head>
+	<title>Test</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style type="text/css">
+		html,body{width:100%;height:100%;padding:0;margin:0;}
+		.row{position:relative;margin:auto;top:0;right:0;bottom:0;left:0;}
+		.bluegrad {
+			background-image: -ms-linear-gradient(top, #EDF8FF 0%, #CFEBF9 100%);
+			background-image: -moz-linear-gradient(top, #EDF8FF 0%, #CFEBF9 100%);
+			background-image: -o-linear-gradient(top, #EDF8FF 0%, #CFEBF9 100%);
+			background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EDF8FF), color-stop(100, #CFEBF9));
+			background-image: -webkit-linear-gradient(top, #EDF8FF 0%, #CFEBF9 100%);
+			background-image: linear-gradient(to bottom, #EDF8FF 0%, #CFEBF9 100%);
+		}
+		.bluegrad:hover{background:#5eaff2;}
+		h1,h2,.h1,.h2,p,span{font-family:Century Gothic,CenturyGothic,AppleGothic,sans-serif;font-weight:700;line-height:1.42857143;color:#333333;}
+		h2,.h2{font-size:28px;}
+		.box{width:65%;margin:0 auto;justify-content:center;}
+		.col{padding:5%;width:40%; }
+		.rightside {float:right}
+		.leftside{float:left}
+		IMG{margin-left:auto;margin-right:auto;max-width:100%;box-shadow:0 3px 6px rgba(0,0,0,0.9);}
+		.circle{position:relative;margin-top:-15px;left:45%;float:left;border:0.1em solid #fff;border-radius:100%;height:3em;width:3em;background:#A36EB2;text-align:center;}
+		.circle span{font-size:1.5em;line-height:2em;font-weight:bold;color:#fff;}
+		.description_text{
+
+		}
+b,strong { font-weight: bold; }
+.imagecont > .cap { position: absolute; bottom: 0; left: 0; right: 0; }
+#caption { background: #000; color: #ccc; display: none; overflow: hidden; }
+#caption p { padding: 5px; margin: 0; }
+
+figure {
+  margin: 1em 40px;
+}
+hr {
+  height: 0;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+img {
+  border: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+
+
+/*Cr9,10,11 atk 9 to dtw, atk 10 3x*/
+
+
+
+		@media only screen and (max-width: 500px) {
+		  h1,h2,.h1,.h2,p,span{font-family:Century Gothic,CenturyGothic,AppleGothic,sans-serif;font-weight:700;line-height:1.42857143;color:#333333;}
+		  h2,.h2{font-size:28px;}
+		  .box{width:100%;justify-content:center;}
+		  .col{width:100%;}
+		  .rightside{width:100%;padding:5%;float:left;}
+		  .leftside{width:100%;padding:5%;float:left;}
+		  IMG{margin-left:auto;margin-right:auto;max-width:100%;box-shadow:0 3px 6px rgba(0,0,0,0.9);}
+		  .circle{position:relative;left:45%;float:left;border-radius:100%;height:2em;width:2em;background:#A36EB2;text-align:center;}
+		  .circle span{font-size:1.25em;line-height:1.5em;font-weight:bold;color:#fff;}
+		}
+
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+
+$(document).ready(function(){
+ 	$("img").load(function(e){  console.log("Image Size is " + $(this).width() + "x" + $(this).height() + " Width/Height") });
+
+ 		$("#image img").click(function(e)
+		{
+			//e.preventDefault();
+			var image_source = $(this).attr('src');
+			var alt_text = $(this).attr('alt');
+			var w = $(this).width();
+			var h = $(this).height();
+			var imageinfo = '<p id="description_text"> ' +
+			//	'Name: ' + 	alt_text + '<br>' +
+				'Width:  ' + w + '<br>' +
+			//	'Height: ' + h + '<br>' +
+				'Source: ' + image_source +
+			'</p>';
+
+            	 // $(this).parent(".imagecont").append(imageinfo);
+
+            	 $("#caption").append(imageinfo);
+
+            	// $(this).parents("#caption").slideToggle("slow");
+ 		 $("#caption").slideToggle();
+
+		console.log("=======================================================");
+		console.log("%c IMAGE NAME:  ", 'border: solid 2px red; color: #black;text-transform: uppercase;font-weight: bold;', alt_text);
+		console.log("%c Width:  ", 'background: #FFF; color: blue;text-transform: uppercase;font-weight: bold;', $(this).width());
+		console.log("%c Height:  ", 'background: #FFF; color: blue;text-transform: uppercase;font-weight: bold;', $(this).height());
+		console.log("%c Source:  ", 'background: #FFF; color: red;text-transform: uppercase;font-weight: bold;', image_source);
+		console.log("=======================================================");
+		// alert("Width of image: " + $("#image1").width() + " Height of image: " + $("#image1").height() + alt_text);
+	});
+});
+
+
+</script>
+
+</head>
+<body>
+	<div class="bluegrad row row1">
+		<div class="box">
+			<div class="leftside col">
+				<h2 class="title">Intro</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac vehicula dui. Pellentesque nisi
+					lectus, egestas vitae tempus eleifend.</p>
+
+			</div>
+			<div class="rightside col imagecont">
+				<div id="image">
+					<div class="circle">
+						<span class="nc">1</span>
+					</div>
+					<img id="image1" class="img" src="http://lorempixel.com/380/185" alt="ImageONE" />
+					<div id="caption" class="cap">
+
+					</div>
+
+				</div>
+
+			</div>
+			 <div style="clear:both"></div>
+		</div>
+	</div>
+	<div class="bluegrad row row2">
+		<div class="box">
+			<div class="rightside col">
+				<h2 class="title">Intro</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac vehicula dui. Pellentesque nisi
+					lectus, egestas vitae tempus eleifend.</p>
+			</div>
+			<div class="leftside col imagecont">
+				<div id="image">
+					<div class="circle">
+						<span class="nc">2</span>
+					</div>
+					<img id="image2" class="img" src="http://lorempixel.com/380/215" alt="ImageTWO" />
+					<div id="caption" class="cap"></div>
+				</div>
+			</div>
+
+			 <div style="clear:both"></div>
+		</div>
+	</div>
+</body>
+</html>

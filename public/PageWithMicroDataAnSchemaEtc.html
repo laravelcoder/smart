@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Frontend UI Example | created by Phillip Madsen</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<style type="text/css">
+		html,body{width:100%;height:100%;padding:0;margin:0;}
+		.row{ position:relative;margin:auto;top:0;right:0;bottom:0;left:0;}
+		.bluegrad {
+			background-image: -ms-linear-gradient(top, #EDF8FF 0%, #CFEBF9 100%);
+			background-image: -moz-linear-gradient(top, #EDF8FF 0%, #CFEBF9 100%);
+			background-image: -o-linear-gradient(top, #EDF8FF 0%, #CFEBF9 100%);
+			background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EDF8FF), color-stop(100, #CFEBF9));
+			background-image: -webkit-linear-gradient(top, #EDF8FF 0%, #CFEBF9 100%);
+			background-image: linear-gradient(to bottom, #EDF8FF 0%, #CFEBF9 100%);
+		}
+		.bluegrad:hover{background:#5eaff2;}
+		h1,h2,.h1,.h2,p,span{font-family:Century Gothic,CenturyGothic,AppleGothic,sans-serif;font-weight:700;line-height:1.42857143;color:#333333;}
+		h2,.h2{font-size:3em;}
+		p{font-size:1.25em;}
+		.right{float:right}
+		.left{float:left}
+		/*div.box { border-style: solid; border-width: 2px; border-color: #c435c4; }*/
+		.marginauto { margin-right: auto; margin-left: auto; }
+		.piccap { position: relative; margin: 0 auto; }
+		img { display: block; vertical-align: middle;  justify-content: center;max-width:100%;box-shadow:0 3px 6px rgba(0,0,0,0.9);border:0; width:auto\9;height:auto;-ms-interpolation-mode:bicubic}
+		.piccap > #caption { position: absolute; bottom: 0; left: 0; right: 0; }
+		.section { padding-top: 2%;  }
+		#caption { background: #000; color: #ccc; padding:2px; display: none; overflow: hidden; font-size:12px;}
+		@media only screen and (min-width : 320px) {    }
+		@media only screen and (min-width : 480px) {    }
+		@media only screen and (min-width : 768px) {
+			.section { width: 750px; }
+			.box { width: 44%; padding: 2%; display: inline-block; position: relative; margin-right: auto; margin-left: auto; }
+			img {margin-right: auto; margin-left: auto; margin-bottom:0;margin-top:0; max-width:100%; width:auto\9;height:auto;-ms-interpolation-mode:bicubic}
+			.circle { position: absolute; background: #A36EB2; border: 0.1em solid #fff; border-radius: 100%; color: #FFF; height: 3em; left: 45%; text-align: center; top: -15px; width: 3em; overflow: visible; }
+			.circle span { color: #fff; font-size: 1.5rem; font-weight: bold; line-height: 2em; }
+			h2,.h2{font-size:2.5rem;margin-bottom:0;margin-top:0;}
+		}
+		@media only screen and (min-width : 992px) {
+			.section { width: 970px; }
+			.box { width: 45%;padding: 2%; display: inline-block; position: relative;margin-right: auto; margin-left: auto;  }
+			.circle { position: absolute; background: #A36EB2; border: 0.1em solid #fff; border-radius: 100%; color: #FFF; height: 3em; left: 45%; text-align: center; top: -15px; width: 3em; overflow: visible; }
+			.circle span { color: #fff; font-size: 1.5rem; font-weight: bold; line-height: 2em; }
+			img {margin-right: auto; margin-left: auto; margin-bottom:0;margin-top:0; max-width:100%; width:auto\9;   height:auto;-ms-interpolation-mode:bicubic}
+		}
+		@media only screen and (min-width : 1200px) {
+			.section { width: 1170px; }
+			.box { width: 45%; padding: 20px; display: inline-block; position: relative; }
+			.circle { position: absolute; background: #A36EB2; border: 0.1em solid #fff; border-radius: 100%; color: #FFF; height: 3em; left: 45%; text-align: center; top: -15px; width: 3em; overflow: visible; }
+			.circle span { color: #fff; font-size: 1.5rem; font-weight: bold; line-height: 2em; }
+			img {margin-right: auto; margin-left: auto; margin-bottom:0;margin-top:0; max-width:100%; width:auto\9;   height:auto;-ms-interpolation-mode:bicubic}
+		}
+		@media only screen and (max-width : 1200px) {
+			.section { width: 1170px; }
+			.box { width: 45%; padding: 2%; display: inline-block; position: relative; }
+			.circle { position: absolute; background: #A36EB2; border: 0.1em solid #fff; border-radius: 100%; color: #FFF; height: 3em; left: 45%; text-align: center; top: -15px; width: 3em; overflow: visible; }
+			.circle span { color: #fff; font-size: 1.5rem; font-weight: bold; line-height: 2em; }
+		}
+		@media only screen and (max-width : 992px) {
+			.section { width: 970px; }
+			.box { width: 45%; padding: 2%; display: inline-block; position: relative;margin-right: auto; margin-left: auto;  }
+			img {margin-right: auto; margin-left: auto; margin-bottom:0;margin-top:0; max-width:100%;}
+			.circle { position: absolute; background: #A36EB2; border: 0.1em solid #fff; border-radius: 100%; color: #FFF; height: 3em; left: 45%; text-align: center; top: -15px; width: 3em; overflow: visible; }
+			.circle span { color: #fff; font-size: 1.5rem; font-weight: bold; line-height: 2em; }
+		}
+		@media only screen and (max-width : 768px) {
+			.section { width: 750px; }
+			.box { width: 44%; padding: 2%; display: inline-block; position: relative; margin-right: auto; margin-left: auto; }
+			img {margin-right: auto; margin-left: auto; margin-bottom:0;margin-top:0; max-width:100%; width:auto\9;height:auto;-ms-interpolation-mode:bicubic}
+			.circle { position: absolute; background: #A36EB2; border: 0.1em solid #fff; border-radius: 100%; color: #FFF; height: 3em; left: 45%; text-align: center; top: -15px; width: 3em; overflow: visible; }
+			.circle span { color: #fff; font-size: 1.5rem; font-weight: bold; line-height: 2em; }
+			h2,.h2{font-size:2.5rem;margin-bottom:0;margin-top:0;}
+		}
+		@media only screen and (max-width : 480px) {
+			.section { width: 100%; }
+			.box { width: 90%; padding:0 5%; display: inline-block; position: relative; margin-right: auto; margin-left: auto; }
+			img {margin-right: auto; margin-left: auto;margin-bottom:0;margin-top:0; max-width:100%; width:auto\9;   height:auto;-ms-interpolation-mode:bicubic}
+			.circle { position: absolute; background: #A36EB2; border: 0.1em solid #fff; border-radius: 100%; color: #FFF; height: 2em; left: 45%;
+				text-align: center; top: -15px; width: 2em; overflow: visible; }
+			.circle span { color: #fff; font-size: 1em; font-weight: bold; line-height: 2em; }
+			h2,.h2{font-size:2.5rem;margin-bottom:0;margin-top:0;}
+		}
+		@media only screen and (max-width : 320px) {
+			.section { width: 100%; }
+			.box { width: 90%; padding:0 5%; display: inline-block; position: relative; margin-right: auto; margin-left: auto; }
+			img {margin-right: auto; margin-left: auto;margin-bottom:0;margin-top:0; max-width:100%; width:auto\9;   height:auto;-ms-interpolation-mode:bicubic}
+			.circle { position: absolute; background: #A36EB2; border: 0.1em solid #fff; border-radius: 100%; color: #FFF; height: 2em; left: 45%;
+				text-align: center; top: -15px; width: 2em; overflow: visible; }
+			.circle span { color: #fff; font-size: 1em; font-weight: bold; line-height: 2em; }
+			h2,.h2{font-size:2.5rem;margin-bottom:0;margin-top:0;}
+		}
+
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<script>
+        $(function(){
+            $('img').click(function(e){
+                e.preventDefault();
+                $(this).next("#caption").slideToggle("slow");
+                return false;
+
+            });
+        });
+	</script>
+<script type="application/ld+json">
+{
+ "@context": "http://www.schema.org",
+	  "@type": "person",
+	  "name": "Phillip Madsen",
+	  "jobTitle": "Senior Front-end UI /PHP Developer",
+	  "url": "https://www.linkedin.com/in/phillipmadsen",
+	  "address": {
+	    "@type": "PostalAddress",
+	    "addressLocality": "Salt Lake City",
+	    "addressRegion": "UT",
+	    "postalCode": "84047",
+	    "addressCountry": "United States"
+	  },
+	  "email": "wecodelaravel@gmail.com",
+	  "telephone": "+16852826160"
+
+    }
+</script>
+<script type='application/ld+json'>
+{
+	"@context": "http://schema.org/",
+	"@type": "AboutPage",
+	"lastReviewed": "05/23/2017",
+	"alternativeHeadline": "Phillip Madsen Frontend UI Code Example",
+	"author": "Phillip Madsen",
+	"commentCount": "23",
+	"contentRating": "5",
+	"creator": "Phillip Madsen",
+	"datePublished": "05/23/2017",
+	"headline": "Frontend UI Code Example created by Phillip Madsen ",
+	"isFamilyFriendly": "true",
+	"keywords": [
+		"PHP",
+		"Frontend UI",
+		"Frontend UI Web Development"
+	],
+	"learningResourceType": "PHP / Frontend UI",
+	"publisher": "https://www.linkedin.com/in/phillipmadsen",
+	"alternateName": "PHP / fronend UI Coding Example",
+	"description": "frontend ui test example for employment consideration."
+}
+</script>
+</head>
+<body>
+<meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage"
+
+
+<div class="row bluegrad" itemscope itemtype="http://schema.org/Article">
+	<div class="section marginauto">
+		<div class="box left">
+			<div class="titletext">
+				<h2 itemprop="headline">Intro</h2>
+				<h3 itemprop="author" itemscope itemtype="https://schema.org/Person">    By <span itemprop="name">Phillip Madsen</span>  </h3>
+				<hr />
+				<p itemprop="description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac vehicula dui. Pellentesque nisi lectus, egestas vitae tempus eleifend.</p>
+			</div>
+		</div>
+		<div class="box right">
+			<div class="piccap" itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+				<div class="circle">
+					<span class="nc">1</span>
+				</div>
+				<img class="photo" src="http://placehold.it/380x185.jpg/000000/E8117F?text=it+Worked" alt="Image One" />
+				<meta itemprop="url" content="/PageWithMicroDataAnSchemaEtc.html">
+				<meta itemprop="width" content="380">
+				<meta itemprop="height" content="185">
+
+			</div>
+
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	 <meta itemprop="datePublished" content="2017-05-24T08:00:00+08:00"/>
+  	<meta itemprop="dateModified" content="2017-05-24T09:20:00+08:00"/>
+</div>
+
+<div class="row bluegrad">
+	<div class="section marginauto">
+		<div class="box right">
+			<div class="titletext">
+				<h2 itemprop="headline">Intro</h2>
+
+				<hr />
+				<h3 itemprop="author" itemscope itemtype="https://schema.org/Person">    By <span itemprop="name">Phillip Madsen</span>  </h3>
+				<p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac vehicula dui. Pellentesque nisi lectus, egestas vitae tempus eleifend.</p>
+			</div>
+		</div>
+		<div class="box left">
+			<div class="piccap">
+				<div class="circle"> <span class="nc">2</span> </div>
+				<img class="photo" src="http://placehold.it/380x215.jpg/E8117F/000000?text=Yea+Boy!" alt="Image Two" />
+				<!-- <img src="http://placehold.it/380x215.jpg/E8117F/000000?text=Yea+Boy!" srcset="http://placehold.it/380x215.jpg/E8117F/000000?text=Yea+Boy! 300w" sizes="100vw" alt="Placeholder"/> -->
+
+ 			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+
+<script>
+
+    (function($) {
+        $(document).ready(function(){
+        var $this = $(this);
+        $("img").load(function () {
+            console.log("Image Size is " + $(this).width() + "x" + $(this).height() + " Width/Height");
+            var caption = $('#caption');
+            var image_source = $(this).attr('src');
+            var alt_text = $(this).attr('alt');
+            var w = $(this).width();
+            var h = $(this).height();
+            $(this).css({'width': $(this).width(), 'height': $(this).height()});
+            $(this).parent().height(jQuery(this).height());
+            // $(this).parent().width(jQuery(this).width()).css('overflow', 'hidden');
+            $(this).parent().width(jQuery(this).width());
+            var imageinfo = '<div id="caption">Name: ' + alt_text + '<br>' +
+                'Size:: Width:  ' + w + ' px | ' + 'Height: ' + h + ' px<br>' +
+                'Source: ' + image_source + '</div>';
+            $(this).parent(".piccap").append(imageinfo);
+            $("#caption:even").css( "background-color", "#E8117F", "color","#000000" );
+            $("#caption:even").css(  "color","#000000" );
+            console.log("=======================================================");
+            console.log("%c IMAGE NAME:  ", 'border: solid 2px red; color: #black;text-transform: uppercase;font-weight: bold;', alt_text);
+            console.log("%c Width:  ", 'background: #FFF; color: blue;text-transform: uppercase;font-weight: bold;', $(this).width());
+            console.log("%c Height:  ", 'background: #FFF; color: blue;text-transform: uppercase;font-weight: bold;', $(this).height());
+            console.log("%c Source:  ", 'background: #FFF; color: red;text-transform: uppercase;font-weight: bold;', image_source);
+            console.log("=======================================================");
+        });
+        var maxHeight = 225;
+        $("div.box").each(function () {
+            if ($(this).height() > maxHeight) {
+                maxHeight = $(this).height();
+            }
+        });
+        $("div.box").height(maxHeight);
+        });
+    }(jQuery));
+
+
+</script>
+
+</body>
+</html>

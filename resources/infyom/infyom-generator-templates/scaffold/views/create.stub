@@ -1,0 +1,68 @@
+@extends('backEnd.layout')
+
+@section('headerInclude')
+    <link href="{{ URL::to("backEnd/libs/js/iconpicker/fontawesome-iconpicker.min.css") }}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+@endsection
+
+@section('content')
+
+    <div class="padding">
+        <div class="box">
+            <div class="box-header dker">
+                <h3><i class="material-icons"> &#xe02e;</i>
+                        {{ trans('$MODEL_NAME_PLURAL_CAMEL$.topicNew') }} {!! trans('$MODEL_NAME_PLURAL_CAMEL$.'. WebmasterSection->name) !!}
+                        $MODEL_NAME_HUMAN$
+                </h3>
+                <small>
+                    <a href="{{ route('adminHome') }}">{{ trans('backLang.home') }}</a> /
+                    <a>{!! trans('backLang.'.$WebmasterSection->name) !!}</a>
+                </small>
+            </div>
+            <div class="box-tool">
+                <ul class="nav">
+                    <li class="nav-item inline">
+                        <a class="nav-link" href="{{ route('topics', $$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$ ) }}">
+                            <i class="material-icons md-18">×</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-body">
+            @include('adminlte-templates::common.errors')
+                     {{--       $ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.update', $$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$  --}}
+
+                {!! Form::open(['route' => '$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.store']) !!}
+
+
+                        @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.fields')
+
+                {!! Form::close() !!}
+
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+@section('footerInclude')
+
+    <script src="{{ URL::to("backEnd/libs/js/iconpicker/fontawesome-iconpicker.js") }}"></script>
+    <script>
+        $(function() {
+            $('.icp-auto').iconpicker({ placement: '{{ (trans('$MODEL_NAME_PLURAL_CAMEL$.direction')=="rtl")?"topLeft":"topRight" }}'});
+        });
+    </script>
+@endsection
+
+{{--
+MODEL_NAME_PLURAL_CAMEL  = $MODEL_NAME_PLURAL_CAMEL$
+MODEL_NAME_CAMEL  = $MODEL_NAME_CAMEL$
+PRIMARY_KEY_NAME = $PRIMARY_KEY_NAME$
+MODEL_NAME_HUMAN =  $MODEL_NAME_HUMAN$
+VIEW_PREFIX = $VIEW_PREFIX$
+MODEL_NAME_PLURAL_SNAKE = $MODEL_NAME_PLURAL_SNAKE$
+ROUTE_NAMED_PREFIX = $ROUTE_NAMED_PREFIX$
+--}}

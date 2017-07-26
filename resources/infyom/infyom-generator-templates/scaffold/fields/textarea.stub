@@ -1,0 +1,14 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
+    {!! Form::textarea('$FIELD_NAME$', null, ['class' => 'form-control']) !!}
+</div>
+
+{{-- AddToLang '$FIELD_NAME$' => '$FIELD_NAME_TITLE$', --}}
+
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-sm-12 col-md-12 col-lg-12">
+    {!! Form::label('$FIELD_NAME$', trans('$MODEL_NAME_PLURAL_CAMEL$.$FIELD_NAME$')) !!}
+    {!! Form::textarea('$FIELD_NAME$', null, ['class' => 'form-control ckeditor', 'rows' => '5']) !!}
+</div>
+{{-- AddToLang '$FIELD_NAME$' => '$FIELD_NAME_TITLE$', --}}
