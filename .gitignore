@@ -10,3 +10,4 @@ Homestead.yaml
 /.idea
 *.psd
 /*.sublime-workspace
+/public/html/*
