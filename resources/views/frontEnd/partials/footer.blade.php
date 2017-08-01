@@ -67,7 +67,7 @@
           <div class="widget dark">
             <h5 class="widget-title mb-10">Call Us Now</h5>
             <div class="text-gray">
-              +1 385 282 6160 <br>
+              +1 (385) 282 6160 <br>
 
             </div>
           </div>
@@ -149,3 +149,5 @@
       </div>
     </div>
   </footer>
+
+

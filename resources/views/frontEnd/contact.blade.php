@@ -1,243 +1,220 @@
 @extends('frontEnd.layout')
 
-@section('json-ld')
-<script type="application/ld+json">
-{
-"@context" : "http://schema.org",
-"@type" : "Step 1: Choose a Business Type",
-"name":"Affordable Programmer",
-"email":"contact@affordableprogrammer.com",
-"telephone":"13852826160",
-"openingHours": [
-"Mo-Fri 08:00-17:00 "],
-}
-</script>
-@endsection
-
 @section('content')
-    <?php
-    $title_var = "title_" . trans('backLang.boxCode');
-    $title_var2 = "title_" . trans('backLang.boxCodeOther');
-    $details_var = "details_" . trans('backLang.boxCode');
-    $details_var2 = "details_" . trans('backLang.boxCodeOther');
-    if ($Topic->$title_var != "") {
-        $title = $Topic->$title_var;
-    } else {
-        $title = $Topic->$title_var2;
-    }
-    if ($Topic->$details_var != "") {
-        $details = $details_var;
-    } else {
-        $details = $details_var2;
-    }
-    $section = "";
-    try {
-        if ($Topic->section->$title_var != "") {
-            $section = $Topic->section->$title_var;
-        } else {
-            $section = $Topic->section->$title_var2;
-        }
-    } catch (Exception $e) {
-        $section = "";
-    }
-    ?>
-    <section id="inner-headline">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="breadcrumb">
-                        <li><a href="{{ route('Home') }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
-                        </li>
-                        <li class="active">{{ $title }}</li>
-                    </ul>
-                </div>
+
+  <!-- Start main-content -->
+  <div class="main-content">
+
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="http://placehold.it/1920x1280">
+      <div class="container pt-90 pb-50">
+        <!-- Section Content -->
+        <div class="section-content pt-100">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="title text-white">Contact</h3>
             </div>
+          </div>
         </div>
+      </div>
     </section>
-    <section id="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <article>
-                        @if($WebmasterSection->type==2 && $Topic->video_file!="")
-                            {{--video--}}
-                            <div class="post-video">
-                                <div class="video-container">
-                                    @if($Topic->video_type ==1)
-                                        <?php
-                                        $Youtube_id = Helper::Get_youtube_video_id($Topic->video_file);
-                                        ?>
-                                        @if($Youtube_id !="")
-                                            {{-- Youtube Video --}}
-                                            <iframe allowfullscreen src="https://www.youtube.com/embed/{{ $Youtube_id }}">
-                                            </iframe>
-                                        @endif
-                                    @elseif($Topic->video_type ==2)
-                                        <?php
-                                        $Vimeo_id = Helper::Get_vimeo_video_id($Topic->video_file);
-                                        ?>
-                                        @if($Vimeo_id !="")
-                                            {{-- Vimeo Video --}}
-                                            <iframe allowfullscreen src="http://player.vimeo.com/video/{{ $Vimeo_id }}?title=0&amp;byline=0">
-                                            </iframe>
-                                        @endif
-
-                                    @else
-                                        <video width="100%" height="300" controls>
-                                            <source src="{{ URL::to('uploads/topics/'.$Topic->video_file) }}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    @endif
 
 
-                                </div>
-                            </div>
-                        @elseif($WebmasterSection->type==3 && $Topic->audio_file!="")
-                            {{--audio--}}
-                            <div class="post-video">
-                                <div class="video-container">
-                                    <audio controls>
-                                        <source src="{{ URL::to('uploads/topics/'.$Topic->audio_file) }}" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
+    <!-- Divider: Contact -->
+    <section class="divider layer-overlay overlay-white-9" data-bg-img="{!! asset('/images/bg/bg15.jpg') !!}">
+      <div class="container">
 
-                                </div>
-                            </div>
+        <div class="row pt-30">
+          <div class="col-md-8">
+            <h3 class="line-bottom mt-0 mb-20">Interested in discussing?</h3>
+            <!-- Contact Form -->
+            {!! Form::open(['route'=>['contactPage'],'method'=>'POST', 'id' => 'contact_form', 'class'=>'contactForm form-transparent']) !!}
 
-                        @elseif(count($Topic->photos)>0)
-                            {{--photo slider--}}
-                            <div class="post-slider">
-                                <!-- start flexslider -->
-                                <div id="post-slider" class="flexslider">
-                                    <ul class="slides">
-                                        @if($Topic->photo_file !="")
-                                            <li>
-                                                <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}" alt="{{ $title }}"/>
-                                            </li>
-                                        @endif
-                                        @foreach($Topic->photos as $photo)
-                                            <li>
-                                                <img src="{{ URL::to('uploads/topics/'.$photo->file) }}" alt="{{ $photo->title  }}"/>
-                                            </li>
-                                        @endforeach
-
-                                    </ul>
-                                </div>
-                                <!-- end flexslider -->
-                            </div>
-
-                        @else
-                            {{--one photo--}}
-                            <div class="post-image">
-                                @if($Topic->photo_file !="")
-                                    <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}" alt="{{ $title }}"/>
-                                @endif
-                            </div>
-                        @endif
-
-                        {!! $Topic->$details !!}
-                    </article>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="form_name">Name <small>*</small></label>
+                    {!! Form::text('contact_name',"", array('placeholder' => trans('frontLang.yourName'),'class' => 'form-control','id'=>'name', 'data-msg'=> trans('frontLang.enterYourName'),'data-rule'=>'minlen:4')) !!}
+                        <div class="  validation"></div>
+                  </div>
                 </div>
-            </div>
-            @if(count($Topic->maps) >0)
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4><i class="fa fa-map-marker"></i> {{ trans('frontLang.locationMap') }}</h4>
-                        <div id="google-map"></div>
-                        <br>
-                    </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="form_email">Email <small>*</small></label>
+                    {!! Form::email('contact_email',"", array('placeholder' => trans('frontLang.yourEmail'),'class' => 'form-control','id'=>'email', 'data-msg'=> trans('frontLang.enterYourEmail'),'data-rule'=>'email')) !!}
+                        <div class="validation"></div>
+                  </div>
                 </div>
-            @endif
-            <div class="row">
-
-                <div class="col-lg-6">
-                    <h4><i class="fa fa-envelope"></i> {{ trans('frontLang.getInTouch') }}</h4>
-
-                    <div id="sendmessage"><i class="fa fa-check-circle"></i>
-                        &nbsp;{{ trans('frontLang.youMessageSent') }}</div>
-                    <div id="errormessage">{{ trans('frontLang.youMessageNotSent') }}</div>
-
-                    {{Form::open(['route'=>['contactPage'],'method'=>'POST','class'=>'contactForm'])}}
-                    <div class="form-group">
-                        {!! Form::text('contact_name',"", array('placeholder' => trans('frontLang.yourName'),'class' => 'form-control','id'=>'name', 'data-msg'=> trans('frontLang.enterYourName'),'data-rule'=>'minlen:4')) !!}
-                        <div class="alert alert-warning validation"></div>
-                    </div>
-                    <div class="form-group">
-                        {!! Form::email('contact_email',"", array('placeholder' => trans('frontLang.yourEmail'),'class' => 'form-control','id'=>'email', 'data-msg'=> trans('frontLang.enterYourEmail'),'data-rule'=>'email')) !!}
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="form_name">Subject <small>*</small></label>
+                    {!! Form::text('contact_subject',"", array('placeholder' => trans('frontLang.subject'),'class' => 'form-control','id'=>'subject', 'data-msg'=> trans('frontLang.enterYourSubject'),'data-rule'=>'minlen:4')) !!}
                         <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                        {!! Form::text('contact_phone',"", array('placeholder' => trans('frontLang.phone'),'class' => 'form-control','id'=>'phone', 'data-msg'=> trans('frontLang.enterYourPhone'),'data-rule'=>'minlen:4')) !!}
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="form_phone">Phone</label>
+                    {!! Form::text('contact_phone',"", array('placeholder' => trans('frontLang.phone'),'class' => 'form-control','id'=>'phone', 'data-msg'=> trans('frontLang.enterYourPhone'),'data-rule'=>'minlen:4')) !!}
                         <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                        {!! Form::text('contact_subject',"", array('placeholder' => trans('frontLang.subject'),'class' => 'form-control','id'=>'subject', 'data-msg'=> trans('frontLang.enterYourSubject'),'data-rule'=>'minlen:4')) !!}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="form_name">Message</label>
+                {!! Form::textarea('contact_message','', array('placeholder' => trans('frontLang.message'),'class' => 'form-control','id'=>'message','rows'=>'6', 'data-msg'=> trans('frontLang.enterYourMessage'),'data-rule'=>'required')) !!}
                         <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                        {!! Form::textarea('contact_message','', array('placeholder' => trans('frontLang.message'),'class' => 'form-control','id'=>'message','rows'=>'6', 'data-msg'=> trans('frontLang.enterYourMessage'),'data-rule'=>'required')) !!}
-                        <div class="validation"></div>
-                    </div>
+              </div>
 
                     @if(env('NOCAPTCHA_STATUS', false))
                         <div class="form-group">
                             {!! app('captcha')->display($attributes = [], $lang = App::getLocale()) !!}
                         </div>
                     @endif
-                    <div>
-                        <button type="submit" class="btn btn-theme">{{ trans('frontLang.sendMessage') }}</button>
-                    </div>
-                    {{Form::close()}}
-                </div>
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-5 contacts">
-                    <h4><i class="fa fa-envelope"></i> {{ trans('frontLang.contactDetails') }}</h4>
+
+
+              <div class="form-group">
+                <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                <button type="submit" class="btn btn-dark btn-theme-colored btn-flat mr-5" data-loading-text="Please wait...">Send your message</button>
+                <button type="reset" class="btn btn-default btn-flat btn-theme-colored">Reset</button>
+              </div>
+            {!! Form::close() !!}
+
+
+
+
+
+            <!-- Contact Form Validation-->
+            <script type="text/javascript">
+              $("#contact_form").validate({
+                submitHandler: function(form) {
+                  var form_btn = $(form).find('button[type="submit"]');
+                  var form_result_div = '#form-result';
+                  $(form_result_div).remove();
+                  form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                  var form_btn_old_msg = form_btn.html();
+                  form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+                  $(form).ajaxSubmit({
+                    dataType:  'json',
+                    success: function(data) {
+                      if( data.status == 'true' ) {
+                        $(form).find('.form-control').val('');
+                      }
+                      form_btn.prop('disabled', false).html(form_btn_old_msg);
+                      $(form_result_div).html(data.message).fadeIn('slow');
+                      setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
+                    }
+                  });
+                }
+              });
+            </script>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="icon-box left media bg-black-333 p-25 mb-20"> <a class="media-left pull-left" href="#"> <i class="pe-7s-map-2 text-theme-color-2"></i></a>
+                  <div class="media-body">
                     @if(Helper::GeneralSiteSettings("contact_t1_" . trans('backLang.boxCode')) !="")
                         <address>
-                            <strong>{{ trans('frontLang.address') }}:</strong><br>
-                            <i class="fa fa-map-marker"></i>
-                            &nbsp;{{ Helper::GeneralSiteSettings("contact_t1_" . trans('backLang.boxCode')) }}
+                            <strong class="text-white">{{ trans('frontLang.address') }}:</strong><br>
+                            <strong class="text-white">{{ Helper::GeneralSiteSettings("contact_t1_" . trans('backLang.boxCode')) }}</strong>
                         </address>
                     @endif
+                  </div>
+                </div>
+              </div>
+
+              @if(Helper::GeneralSiteSettings("contact_t3") !="")
+              <div class="col-xs-12 col-sm-6 col-md-12 text-white">
+                <div class="icon-box left media bg-black-333 p-25 mb-20"> <a class="media-left pull-left" href="#"> <i class="pe-7s-call text-theme-color-2"></i></a>
+                  <div class="media-body"> <strong class="text-white">OUR CONTACT NUMBERS</strong>
+                    <p>
                     @if(Helper::GeneralSiteSettings("contact_t3") !="")
-                        <p>
-                            <strong>{{ trans('frontLang.callPhone') }}:</strong><br>
-                            <i class="fa fa-phone"></i> &nbsp;<span
-                                    dir="ltr">{{ Helper::GeneralSiteSettings("contact_t3") }}</span>
-                        </p>
+
+                            <strong>{{ trans('frontLang.callPhone') }}:</strong>
+                            <span dir="ltr">{{ Helper::GeneralSiteSettings("contact_t3") }}</span><br>
+
                     @endif
+
                     @if(Helper::GeneralSiteSettings("contact_t5") !="")
-                        <p>
-                            <strong>{{ trans('frontLang.callMobile') }}:</strong><br>
-                            <i class="fa fa-phone"></i> &nbsp;<span
-                                    dir="ltr">{{ Helper::GeneralSiteSettings("contact_t5") }}</span>
-                        </p>
+
+                        {{-- <strong>{{ trans('frontLang.callMobile') }}:</strong> --}}
+                        {{-- <span dir="ltr">{{ Helper::GeneralSiteSettings("contact_t5") }}</span> --}}
+
                     @endif
-                    @if(Helper::GeneralSiteSettings("contact_t4") !="")
-                        <p>
-                            <strong>{{ trans('frontLang.callFax') }}:</strong><br>
-                            <i class="fa fa-fax"></i> &nbsp;<span
-                                    dir="ltr">{{ Helper::GeneralSiteSettings("contact_t4") }}</span>
-                        </p>
-                    @endif
+                    </p>
+                  </div>
+                </div>
+              </div>
+              @endif
+
+              <div class="col-xs-12 col-sm-6 col-md-12 text-white">
+                <div class="icon-box left media bg-black-333 p-25 mb-20"> <a class="media-left pull-left" href="#"> <i class="pe-7s-mail text-theme-color-2"></i></a>
+                  <div class="media-body">
                     @if(Helper::GeneralSiteSettings("contact_t6") !="")
                         <p>
                             <strong>{{ trans('frontLang.email') }}:</strong><br>
-                            <i class="fa fa-envelope"></i> &nbsp;{{ Helper::GeneralSiteSettings("contact_t6") }}
+                            {{ Helper::GeneralSiteSettings("contact_t6") }}
                         </p>
                     @endif
-                    @if(Helper::GeneralSiteSettings("contact_t7_" . trans('backLang.boxCode')) !="")
+                     @if(Helper::GeneralSiteSettings("contact_t7_" . trans('backLang.boxCode')) !="")
                         <p>
                             <strong>{{ trans('frontLang.callTimes') }}:</strong><br>
-                            <i class="fa fa-clock-o"></i>
-                            &nbsp;{{ Helper::GeneralSiteSettings("contact_t7_" . trans('backLang.boxCode')) }}
+                            {{ Helper::GeneralSiteSettings("contact_t7_" . trans('backLang.boxCode')) }}
                         </p>
                     @endif
+                  </div>
                 </div>
+              </div>
+{{--               <div class="col-xs-12 col-sm-6 col-md-12 text-white">
+                <div class="icon-box left media bg-black-333 p-25 mb-20"> <a class="media-left pull-left" href="#"> <i class="fa fa-skype text-theme-color-2"></i></a>
+                  <div class="media-body"> <strong class="text-white">Skype Contact</strong>
+                    <p>phillip.madsen</p>
+                  </div>
+                </div>
+              </div> --}}
             </div>
+          </div>
         </div>
+      </div>
     </section>
+
+    <!-- Divider: Google Map -->
+    <section>
+      <div class="container-fluid pt-0 pb-0">
+        <div class="row">
+
+          <!-- Google Map HTML Codes -->
+          <div
+            data-address="Midvale, UT 84047"
+            data-popupstring-id="#popupstring1"
+            class="map-canvas autoload-map"
+            data-mapstyle="style8"
+            data-height="400"
+            data-latlng="40.620594,-111.866570"
+            data-title="Affordable Programmer"
+            data-zoom="16"
+            data-marker="{!! asset('images/map-marker.png') !!}">
+          </div>
+          <div class="map-popupstring hidden" id="popupstring1">
+            <div class="text-center">
+              <h3>Affordable Programmer</h3>
+              <h4>+1(385) 282-6160</h4>
+            </div>
+          </div>
+          <!-- Google Map Javascript Codes -->
+          {{-- <script src="http://maps.google.com/maps/api/js?key=AIzaSyAYWE4mHmR9GyPsHSOVZrSCOOljk8DU9B4"></script> --}}
+          <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAgzruFTTvea0LEmw_jAqknqskKDuJK7dM"></script>
+
+          <script src="{!! asset('js/google-map-init.js') !!}"></script>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- end main-content -->
 
 @endsection
 

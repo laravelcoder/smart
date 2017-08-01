@@ -2,7 +2,7 @@
 <html lang="{{ trans('backLang.code') }}" dir="{{ trans('backLang.direction') }}">
 <head>
     @include('frontEnd.partials.head')
-    @include('frontEnd.includes.colors')
+    {{-- @include('frontEnd.includes.colors') --}}
     @yield('json-ld')
 </head>
 <?php
@@ -29,33 +29,36 @@ if (Helper::GeneralSiteSettings("style_type")) {
 {{-- <body class="js {!!  $bdy_class !!}" style=" {!!  $bdy_bg_color !!} {!! $bdy_bg_image !!}"> --}}
 <body class="js  " style="  ">
     <div id="wrapper" class="clearfix">
-    {{--   <!-- preloader -->
-      <div id="preloader">
+      <!-- preloader -->
+{{--       <div id="preloader">
         <div id="spinner">
           <img alt="" src="{!! asset('/frontEnd/images/preloaders/5.gif') !!}">
         </div>
         <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
       </div> --}}
-    @include('frontEnd.partials.header')
+
+      @include('frontEnd.partials.header')
       <!-- Start main-content -->
       <div class="main-content">
-        {{--<h1>content here</h1>--}}
+
         <!-- Content Section -->
          @yield('content')
         <!-- end of Content Section -->
+
       </div>
       <!-- end main-content -->
       @include('frontEnd.partials.footer')
 
-      <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+
+
+      <a href="#" title="{{ trans('frontLang.toTop') }}" class="scrollup scrollToTop"><i class="fa fa-angle-up active"></i></a>
     </div>
-<!-- end wrapper -->
+@include('frontEnd.partials.newfoot')
+  <!-- end wrapper -->
+
+
 
   <!-- Footer Scripts -->
-  <!-- JS | Custom script for all pages -->
-  {{--<script src="{!! asset('/frontEnd/js/custom.js') !!}"></script>--}}
-
-
   <script type="text/javascript" src="{!! asset('/frontEnd/js/revolution-slider/js/extensions/revolution.extension.actions.min.js') !!}"></script>
   <script type="text/javascript" src="{!! asset('/frontEnd/js/revolution-slider/js/extensions/revolution.extension.carousel.min.js') !!}"></script>
   <script type="text/javascript" src="{!! asset('/frontEnd/js/revolution-slider/js/extensions/revolution.extension.kenburn.min.js') !!}"></script>
@@ -65,5 +68,7 @@ if (Helper::GeneralSiteSettings("style_type")) {
   <script type="text/javascript" src="{!! asset('/frontEnd/js/revolution-slider/js/extensions/revolution.extension.parallax.min.js') !!}"></script>
   <script type="text/javascript" src="{!! asset('/frontEnd/js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js') !!}"></script>
   <script type="text/javascript" src="{!! asset('/frontEnd/js/revolution-slider/js/extensions/revolution.extension.video.min.js') !!}"></script>
+
+
 </body>
 </html>

@@ -2,19 +2,25 @@
 
 @section('content')
 
-    <section id="inner-headline">
+    <section id="inner-header divider parallax layer-overlay overlay-dark-8" data-bg-img="http://placehold.it/1920x1280">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="breadcrumb">
 
                         </li>
-                        @if(@$WebmasterSection!="none")
-                            <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">{!! trans('backLang.'.$WebmasterSection->name) !!}</li>
-                        @elseif(@$search_word!="")
-                            <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">{{ @$search_word }}</li>
+                        @if(@$WebmasterSection !="none")
+                            <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                           <h2 class="title text-white"> {!! trans('backLang.'.$WebmasterSection->name) !!} </h2>
+                            </li>
+                        @elseif(@$search_word !="")
+                            <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            {{ @$search_word }}
+                            </li>
                         @else
-                            <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">{{ $User->name }}</li>
+                            <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            {{ $User->name }}
+                            </li>
                         @endif
                         @if($CurrentCategory!="none")
                             @if(count($CurrentCategory) >0)

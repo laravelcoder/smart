@@ -100,7 +100,7 @@ var THEMEMASCOT = {};
                     info = "very severely obese";
                 }
                 output = "Your BMI is <span>"  + bmi + "</span><br />" +
-                                                              "You are <span>"  + info + "</span>.";
+                             "You are <span>"  + info + "</span>.";
             } else {
                 output = "You broke it!";
             };
